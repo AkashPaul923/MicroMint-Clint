@@ -18,13 +18,26 @@ const Register = () => {
             <div className="w-full md:w-1/2">
                 <h2 className="text-2xl font-bold text-center mb-6">Register Account</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    {/* Name Input */}
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Name</span>
-                        </label>
-                        <input type="text" {...register("name", { required: true })} placeholder="Enter your name" className="input input-bordered bg-transparent backdrop-blur-lg w-full"/>
-                        {errors.name && <span className="text-red-500">This field is required</span>}
+                    <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-4">
+                        {/* Name Input */}
+                        <div className="form-control w-full col-span-3">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text" {...register("name", { required: true })}    placeholder="Enter your name" className="input input-bordered bg-transparent   backdrop-blur-lg w-full"/>
+                            {errors.name && <span className="text-red-500">This field is required</span>}
+                        </div>
+                        {/* Role Input */}
+                        <div className="form-control w-full col-span-1">
+                            <label className="label">
+                                <span className="label-text">Role</span>
+                            </label>
+                            <select {...register("role")} className="select select-bordered bg-transparent   backdrop-blur-lg w-full">
+                                <option value="worker">Worker</option>
+                                <option value="buyer">Buyer</option>
+                            </select>
+                            {errors.name && <span className="text-red-500">This field is required</span>}
+                        </div>
                     </div>
 
                     {/* photo Input */}
