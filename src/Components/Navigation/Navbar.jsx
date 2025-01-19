@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     const links = (
         <>
-            <li><a>Login</a></li>
-            <li><a>Register</a></li>
+            <li><NavLink to="/login">Login</NavLink></li>
+            <li><NavLink to="/register">Register</NavLink></li>
             <li><a>Join as Developer</a></li>
         </>
     );
@@ -13,20 +13,23 @@ const Navbar = () => {
         <div>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
-                    <NavLink className="btn btn-ghost text-xl">MicroMint</NavLink>
+                    <NavLink to="/" className="btn btn-ghost text-xl">MicroMint</NavLink>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                {/* <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">{links}</ul>
-                </div>
+                </div> */}
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <div className=" hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">{links}</ul>
+                    </div>
+                    <p className="btn mx-3">Coin 0</p>
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}
                             role="button"
                             className="btn btn-ghost btn-circle avatar"
                         >
-                            <div className="w-10 rounded-full">
+                            <div className="w-12 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
                                     src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
