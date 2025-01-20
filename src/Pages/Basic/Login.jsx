@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/image/login.png";
 import loginBg from "../../assets/image/loginBg2.jpg";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useUser from "../../Hooks/useUser";
+import { useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Login = () => {
     const { loginUser } = useAuth()
+    const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -15,7 +20,13 @@ const Login = () => {
 
         // console.log({email, password});
         loginUser(email, password)
-        .then(()=>{
+        .then((res)=>{
+            // refetch()
+            axiosSecure.get(`/users/role/${email}`)
+            .then(res => {
+                console.log(res.data);
+                navigate(`/dashboard/${res.data.role}-home`)
+            })
             Swal.fire({
                 // position: "top-end",
                 icon: "success",
@@ -23,7 +34,8 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            // reset()
+            
+
         })
     }
 

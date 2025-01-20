@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import registerImg from "../../assets/image/login.png";
 import registerBg from "../../assets/image/loginBg2.jpg";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
     const axiosPublic = useAxiosPublic()
+    const navigate= useNavigate()
     const { user, setUser, createUser, profileUpdate} = useAuth()
     const { register, formState: { errors }, handleSubmit } = useForm()
     let coin = 0
@@ -45,6 +46,7 @@ const Register = () => {
                             timer: 1500
                         });
                         // TODO: Redirect user
+                        navigate(`/dashboard/${data.role}-home`)
                     }
                 })
             })
