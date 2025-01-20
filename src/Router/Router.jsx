@@ -9,6 +9,10 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import ManageTasks from "../Pages/Dashboard/Admin/ManageTasks";
 import BuyerHome from "../Pages/Dashboard/Buyer/BuyerHome";
 import WorkerHome from "../Pages/Dashboard/Worker/WorkerHome";
+import PrivateRoute from "../Auth/PrivateRoute";
+import AdminRoute from "../Auth/AdminRoute";
+import BuyerRoute from "../Auth/BuyerRoute";
+import WorkerRoute from "../Auth/WorkerRoute";
 
 const router = createBrowserRouter([
     {
@@ -31,28 +35,30 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
             // Admin
             {
                 path: "/dashboard/admin-home",
-                element: <AdminHome></AdminHome>,
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>,
             },
             {
                 path: "/dashboard/manage-users",
-                element: <ManageUsers></ManageUsers>,
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>,
             },
             {
                 path: "/dashboard/manage-tasks",
-                element: <ManageTasks></ManageTasks>,
+                element: <AdminRoute><ManageTasks></ManageTasks></AdminRoute>,
             },
+            // Buyer Route
             {
                 path: "/dashboard/buyer-home",
-                element: <BuyerHome></BuyerHome>,
+                element: <BuyerRoute><BuyerHome></BuyerHome></BuyerRoute>,
             },
+            // Worker Route
             {
                 path: "/dashboard/worker-home",
-                element: <WorkerHome></WorkerHome>,
+                element: <WorkerRoute><WorkerHome></WorkerHome></WorkerRoute>,
             },
         ]
     },

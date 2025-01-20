@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useUser from "../../Hooks/useUser";
 
 const Navbar = () => {
     const {user, logout, loader} = useAuth()
+    const [userRole, refetch , roleLoading] = useUser()
 
 
 
@@ -29,7 +31,7 @@ const Navbar = () => {
             {
                 user ?
                 <>
-                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                <li><NavLink to={`/dashboard/${userRole.role}-home`}>Dashboard</NavLink></li>
                 <li><button onClick={handleLogout}>Logout</button></li>
                 </>
                 :

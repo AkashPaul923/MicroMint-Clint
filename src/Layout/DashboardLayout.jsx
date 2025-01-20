@@ -6,7 +6,7 @@ import { PiCoinsFill } from "react-icons/pi";
 import useUser from "../Hooks/useUser";
 
 const DashboardLayout = () => {
-    const [userRole, refetch] = useUser()
+    const [userRole, refetch, roleLoading] = useUser()
     const { user } = useAuth()
     return (
         <div>
@@ -30,15 +30,17 @@ const DashboardLayout = () => {
                         </div>
                         <div className="navbar-end space-x-2"> 
                             <table className="text-center border-spacing-1">
-                                <tr>
-                                    <td><div className="btn btn-info btn-sm">Coin: {userRole?.coin}</div></td>
-                                    <td><img src={user?.photoURL} className="w-10 h-10 object-cover rounded-full mx-auto" /></td>
-                                    <td className="rowspan-2"><IoMdNotifications className="text-3xl" /></td>
-                                </tr>
-                                <tr>
-                                    <td><div className="badge badge-accent badge-outline">{userRole?.role}</div></td>
-                                    <td><div className="badge badge-neutral">{user?.displayName}</div></td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><div className="btn btn-info btn-sm">Coin: {userRole?.coin}</div></td>
+                                        <td><img src={user?.photoURL} className="w-10 h-10 object-cover rounded-full mx-auto" /></td>
+                                        <td className="rowspan-2"><IoMdNotifications    className="text-3xl" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div className="badge badge-accent badge-outline">{userRole?.role}</div></td>
+                                        <td><div className="badge badge-neutral">{user?.displayName}</div></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
