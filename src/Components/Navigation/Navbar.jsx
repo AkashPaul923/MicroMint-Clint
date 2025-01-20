@@ -1,13 +1,47 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+    const {user, logout, loader} = useAuth()
+
+
+
+    const handleLogout = () => {
+        logout()
+        .then(()=>{
+            Swal.fire({
+                // position: "top-end",
+                icon: "success",
+                title: "Successfully logout",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+
+    }
+
+
+
+
     const links = (
         <>
-            <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/register">Register</NavLink></li>
+            {
+                user ?
+                <>
+                <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                <li><button onClick={handleLogout}>Logout</button></li>
+                </>
+                :
+                <>
+                <li><NavLink to="/login">Login</NavLink></li>
+                <li><NavLink to="/register">Register</NavLink></li>
+                </>
+            }
             <li><a>Join as Developer</a></li>
         </>
     );
+
 
     return (
         <div>
@@ -22,7 +56,7 @@ const Navbar = () => {
                     <div className=" hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">{links}</ul>
                     </div>
-                    <p className="btn mx-3">Coin 0</p>
+                    {user && <p className="btn mx-3">Coin 0</p>}
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}
@@ -32,7 +66,7 @@ const Navbar = () => {
                             <div className="w-12 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                    src={user? user?.photoURL : "https://img.icons8.com/?size=100&id=7819&format=png&color=000000"}
                                 />
                             </div>
                         </div>
@@ -40,6 +74,7 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow lg:hidden"
                         >
+                            {/* {user? <div>{user?.displayName}</div> :''} */}
                             {links}
                         </ul>
                     </div>

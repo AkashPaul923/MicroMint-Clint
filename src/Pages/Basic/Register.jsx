@@ -44,6 +44,7 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        // TODO: Redirect user
                     }
                 })
             })

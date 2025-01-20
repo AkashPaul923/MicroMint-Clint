@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/image/login.png";
 import loginBg from "../../assets/image/loginBg2.jpg";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { loginUser } = useAuth()
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+
+        // console.log({email, password});
+        loginUser(email, password)
+        .then(()=>{
+            Swal.fire({
+                // position: "top-end",
+                icon: "success",
+                title: "Successfully login",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            // reset()
+        })
+    }
+
     return (
         <div
             className="flex items-center justify-center min-h-screen font-sans"
@@ -23,7 +47,7 @@ const Login = () => {
                     <h2 className="text-2xl font-bold text-center mb-6">
                         Login
                     </h2>
-                    <form  className="space-y-4">
+                    <form onSubmit={handleLogin}  className="space-y-4">
                         {/* Email Input */}
                         <div className="form-control w-full">
                             <label className="label">
@@ -33,6 +57,7 @@ const Login = () => {
                                 type="email"
                                 name="email"
                                 placeholder="Enter your email"
+                                required
                                 className="input input-bordered bg-transparent backdrop-blur-lg w-full"
                             />
                         </div>
@@ -46,6 +71,7 @@ const Login = () => {
                                 type="password"
                                 name="password"
                                 placeholder="Enter your password"
+                                required
                                 className="input input-bordered bg-transparent backdrop-blur-lg w-full"
                             />
                         </div>
