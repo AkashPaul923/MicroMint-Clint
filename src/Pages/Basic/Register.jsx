@@ -2,11 +2,52 @@ import { Link } from "react-router-dom";
 import registerImg from "../../assets/image/login.png";
 import registerBg from "../../assets/image/loginBg2.jpg";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic()
+    const { user, setUser, createUser, profileUpdate} = useAuth()
     const { register, formState: { errors }, handleSubmit } = useForm()
+    let coin = 0
     const onSubmit = (data) => {
         console.log(data)
+        if(data.role === "buyer"){
+            coin = 50
+        }
+        else if(data.role === "worker"){
+            coin = 10
+        }
+        else{
+            coin = 0
+        }
+        createUser( data.email, data.password)
+        .then(res => {
+            console.log(res);
+            profileUpdate( data.name, data.photo)
+            .then(()=>{
+                setUser({...res.user, displayName: data.name, photoURL: data.photo})
+                const userData = {
+                    email: data.email,
+                    name: data.name,
+                    role: data.role,
+                    coin: coin,
+                }
+                axiosPublic.post('/users', userData )
+                .then(res => {
+                    if(res.data.insertedId){
+                        Swal.fire({
+                            // position: "top-end",
+                            icon: "success",
+                            title: "Successfully Register Account",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
+            })
+        })
     }
 
 
