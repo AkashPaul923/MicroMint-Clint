@@ -2,7 +2,6 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { IoMenu } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
-import { PiCoinsFill } from "react-icons/pi";
 import useUser from "../Hooks/useUser";
 
 const DashboardLayout = () => {
@@ -67,7 +66,7 @@ const DashboardLayout = () => {
                         {   userRole?.role === 'buyer' &&
                         <>
                             <li><NavLink to="/dashboard/buyer-home">Home</NavLink></li>
-                            <li><a>Add new Tasks</a></li>
+                            <li><NavLink to='/dashboard/add-new-task'>Add new Tasks</NavLink></li>
                             <li><a>My Task’s</a></li>
                             <li><a>Purchase Coin</a></li>
                             <li><a>Payment history</a></li>
