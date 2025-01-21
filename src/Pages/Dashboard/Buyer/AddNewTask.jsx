@@ -74,9 +74,8 @@ const AddNewTask = () => {
 
     return (
         <div>
-            <h2 className="text-center text-3xl font-bold"></h2>
+            <h2 className="text-3xl font-bold text-center mb-6">Add a New Task</h2>
             <div>
-            <h2 className="text-2xl font-bold text-center mb-6">Add a New Task</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-2xl mx-auto">
                     {/* Task Title Input */}
                     <div className="form-control w-full">
@@ -122,7 +121,7 @@ const AddNewTask = () => {
                         {errors.submissionInfo && <span className="text-red-500">This field is required</span>}
                     </div>
 
-                    {/* Submission Info  Input */}
+                    {/* task img  Input */}
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Task Image</span>
@@ -141,7 +140,7 @@ const AddNewTask = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <input type="submit" className="btn btn-accent w-full mt-4" value="Sign Up" />
+                    <input type="submit" className="btn btn-accent w-full mt-4" value="Add Task" />
                 </form> 
             </div>
         </div>

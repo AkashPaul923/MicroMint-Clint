@@ -15,6 +15,7 @@ import BuyerRoute from "../Auth/BuyerRoute";
 import WorkerRoute from "../Auth/WorkerRoute";
 import AddNewTask from "../Pages/Dashboard/Buyer/AddNewTask";
 import MyTasks from "../Pages/Dashboard/Buyer/MyTasks";
+import UpdateTask from "../Pages/Dashboard/Buyer/UpdateTask";
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/my-tasks",
                 element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
+            },
+            {
+                path: "/dashboard/update-tasks/:id",
+                element: <BuyerRoute><UpdateTask></UpdateTask></BuyerRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
             },
             // Worker Route
             {
