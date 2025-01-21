@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useUser from "../../Hooks/useUser";
-
 const Navbar = () => {
     const {user, logout, loader} = useAuth()
     const [userRole, refetch , roleLoading] = useUser()
+    
 
 
 
@@ -31,7 +31,7 @@ const Navbar = () => {
             {
                 user ?
                 <>
-                <li><NavLink to={`/dashboard/${userRole.role}-home`}>Dashboard</NavLink></li>
+                {!roleLoading && <li><NavLink to={`/dashboard/${userRole?.role}-home`}>Dashboard</NavLink></li>}
                 <li><button onClick={handleLogout}>Logout</button></li>
                 </>
                 :
@@ -58,7 +58,7 @@ const Navbar = () => {
                     <div className=" hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">{links}</ul>
                     </div>
-                    {user && <p className="btn mx-3">Coin 0</p>}
+                    {user && <p className="btn mx-3">Coin {userRole?.coin}</p>}
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}

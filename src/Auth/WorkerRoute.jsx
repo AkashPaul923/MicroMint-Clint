@@ -13,7 +13,7 @@ const WorkerRoute = ({children}) => {
     if(user && userRole.role === "worker"){
         return children
     }
-
+    console.log(user);
     return <Navigate to='/'></Navigate>
 
 };

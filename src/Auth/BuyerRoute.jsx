@@ -13,7 +13,7 @@ const BuyerRoute = ({children}) => {
     if(user && userRole.role === "buyer"){
         return children
     }
-
+    console.log(user);
     return <Navigate to='/'></Navigate>
 
 };
