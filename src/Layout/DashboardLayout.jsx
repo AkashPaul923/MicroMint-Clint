@@ -67,7 +67,7 @@ const DashboardLayout = () => {
                         <>
                             <li><NavLink to="/dashboard/buyer-home">Home</NavLink></li>
                             <li><NavLink to='/dashboard/add-new-task'>Add new Tasks</NavLink></li>
-                            <li><a>My Task’s</a></li>
+                            <li><NavLink to='/dashboard/my-tasks'>My Task’s</NavLink></li>
                             <li><a>Purchase Coin</a></li>
                             <li><a>Payment history</a></li>
                         </>

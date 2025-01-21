@@ -14,6 +14,7 @@ import AdminRoute from "../Auth/AdminRoute";
 import BuyerRoute from "../Auth/BuyerRoute";
 import WorkerRoute from "../Auth/WorkerRoute";
 import AddNewTask from "../Pages/Dashboard/Buyer/AddNewTask";
+import MyTasks from "../Pages/Dashboard/Buyer/MyTasks";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/add-new-task",
                 element: <BuyerRoute><AddNewTask></AddNewTask></BuyerRoute>,
+            },
+            {
+                path: "/dashboard/my-tasks",
+                element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
             },
             // Worker Route
             {
