@@ -4,22 +4,24 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useUser from "../../../Hooks/useUser";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const imageHostingKey= import.meta.env.VITE_IMAGE_HOSTING_KEY
 const imageHostingAPI = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`
 
 const AddNewTask = () => {
+    const {user} = useAuth()
     const [userRole, refetch, roleLoading] = useUser()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    const { register, formState: { errors }, handleSubmit } = useForm()
+    const { register, formState: { errors }, handleSubmit, reset } = useForm()
        
     const onSubmit = async (data) =>{
-        console.log(data);
+        // console.log(data);
         const totalAmount = parseFloat(data.payableAmount) * parseInt(data.requiredWorker)
-        console.log(totalAmount);
-        console.log(userRole.coin);
+        // console.log(totalAmount);
+        // console.log(userRole.coin);
         if(totalAmount > userRole.coin) {
             Swal.fire({
                 // position: "top-end",
@@ -30,25 +32,43 @@ const AddNewTask = () => {
             });
              return navigate("/")   
         }
-        // const imgFile = { image : data.taskImg[0] }
+        const newCoin = userRole.coin - totalAmount
+        const imgFile = { image : data.taskImg[0] }
         // console.log(imgFile);
-        // const ImgRes = await axiosPublic.post(imageHostingAPI, imgFile, {
-        //     headers: {
-        //         'content-type': 'multipart/form-data'
-        //     }
-        // })
-        // if(ImgRes.data.success){
-        //     taskInfo = {
-        //         taskImage: ImgRes.data.display_url,
-        //         completionDate,
-        //         payableAmount: parseFloat(data.payableAmount),
-        //         requiredWorker: parseInt(data.requiredWorker),
-        //         submissionInfo,
-        //         taskDetail,
-        //         taskTitle,
-        //     }
+        const ImgRes = await axiosPublic.post(imageHostingAPI, imgFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+        if(ImgRes.data.success){
+            const taskInfo = {
+                taskImage: ImgRes.data.display_url,
+                completionDate: data.completionDate,
+                payableAmount: parseFloat(data.payableAmount),
+                requiredWorker: parseInt(data.requiredWorker),
+                submissionInfo: data.submissionInfo,
+                taskDetail: data.taskDetail,
+                taskTitle: data.taskTitle,
+                buyerEmail: user.email,
+                buyerName: user.displayName,
+            }
+            const taskRes = await axiosSecure.post('/tasks', taskInfo)
+            if( taskRes.data.insertedId){
+                const coinRes = await axiosSecure.patch(`/update-coin/${user.email}`, {coin: newCoin})
+                if(coinRes.data.modifiedCount >0){
+                    Swal.fire({
+                        // position: "top-end",
+                        icon: "success",
+                        title: "Your task has been saved successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    refetch()
+                    reset()
+                }
+            }
 
-        // }
+        }
     }
 
 
