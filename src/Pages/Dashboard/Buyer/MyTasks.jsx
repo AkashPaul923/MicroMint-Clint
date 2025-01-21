@@ -3,11 +3,14 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useUser from "../../../Hooks/useUser";
+import Swal from "sweetalert2";
 
 const MyTasks = () => {
     const { user } = useAuth();
+    const [userRole, refetch, roleLoading] = useUser()
     const axiosSecure = useAxiosSecure();
-    const { data: tasks = [] } = useQuery({
+    const { data: tasks = [], refetch: taskRefetch } = useQuery({
         queryKey: ["tasks", user.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/my-tasks/${user.email}`);
@@ -16,7 +19,28 @@ const MyTasks = () => {
         },
     });
 
-
+    const handleDeleteTask = async (task) => {
+        const refundCoin = task.payableAmount * task.requiredWorker
+        const totalCoin = userRole.coin + refundCoin
+        const res = await axiosSecure.delete(`/tasks/${task._id}`)
+        // console.log(res);
+        if( res.data.deletedCount > 0 ){
+            const coinRes = await axiosSecure.patch(`/update-coin/${task.buyerEmail}`, {coin: totalCoin})
+            // console.log(coinRes);
+            if(coinRes.data.modifiedCount > 0){
+                Swal.fire({
+                    // position: "top-end",
+                    icon: "success",
+                    title: "Your task has been saved successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                refetch()
+                taskRefetch()
+            }
+        }
+        
+    }
 
 
 
@@ -44,12 +68,8 @@ const MyTasks = () => {
                                     <td className="min-w-40">{task.taskTitle}</td>
                                     <td>{task.completionDate}</td>
                                     <td>{task.requiredWorker}</td>
-                                    <td>
-                                        <Link to={`/dashboard/update-tasks/${task._id}`} className="btn"><FaEdit /></Link>
-                                    </td>
-                                    <td>
-                                        <button className="btn"><FaTrashAlt/></button>
-                                    </td>
+                                    <td><Link to={`/dashboard/update-tasks/${task._id}`} className="btn"><FaEdit /></Link></td>
+                                    <td><button onClick={()=>handleDeleteTask(task)} className="btn"><FaTrashAlt/></button></td>
                                 </tr>
                             ))}
                         </tbody>
