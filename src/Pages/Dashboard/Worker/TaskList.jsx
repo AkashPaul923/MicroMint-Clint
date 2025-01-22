@@ -11,7 +11,7 @@ const TaskList = () => {
         queryKey: ['available-task'],
         queryFn: async () => {
             const res = await axiosSecure.get('/tasks/available')
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }
     })

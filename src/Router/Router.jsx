@@ -17,6 +17,8 @@ import AddNewTask from "../Pages/Dashboard/Buyer/AddNewTask";
 import MyTasks from "../Pages/Dashboard/Buyer/MyTasks";
 import UpdateTask from "../Pages/Dashboard/Buyer/UpdateTask";
 import TaskList from "../Pages/Dashboard/Worker/TaskList";
+import TaskDetail from "../Pages/Dashboard/Worker/TaskDetail";
+import MySubmission from "../Pages/Dashboard/Worker/MySubmission";
 
 const router = createBrowserRouter([
     {
@@ -80,6 +82,15 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/task-list",
                 element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
+            },
+            {
+                path: "/dashboard/task-detail/:id",
+                element: <WorkerRoute><TaskDetail></TaskDetail></WorkerRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
+            },
+            {
+                path: "/dashboard/my-submission",
+                element: <WorkerRoute><MySubmission></MySubmission></WorkerRoute>,
             },
         ]
     },

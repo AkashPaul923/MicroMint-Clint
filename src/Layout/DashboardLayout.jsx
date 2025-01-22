@@ -78,7 +78,7 @@ const DashboardLayout = () => {
                         <>
                             <li><NavLink to="/dashboard/worker-home">Home</NavLink></li>
                             <li><NavLink to='/dashboard/task-list'>TaskList</NavLink></li>
-                            <li><a>My Submissions</a></li>
+                            <li><NavLink to='/dashboard/my-submission'>My Submissions</NavLink></li>
                             <li><a>Withdrawals</a></li>
                         </>
                         }
