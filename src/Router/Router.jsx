@@ -19,6 +19,7 @@ import UpdateTask from "../Pages/Dashboard/Buyer/UpdateTask";
 import TaskList from "../Pages/Dashboard/Worker/TaskList";
 import TaskDetail from "../Pages/Dashboard/Worker/TaskDetail";
 import MySubmission from "../Pages/Dashboard/Worker/MySubmission";
+import Withdrawal from "../Pages/Dashboard/Worker/Withdrawal";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/my-submission",
                 element: <WorkerRoute><MySubmission></MySubmission></WorkerRoute>,
+            },
+            {
+                path: "/dashboard/withdrawal",
+                element: <WorkerRoute><Withdrawal></Withdrawal></WorkerRoute>,
             },
         ]
     },
