@@ -77,7 +77,7 @@ const DashboardLayout = () => {
                         {   userRole?.role === 'worker' &&
                         <>
                             <li><NavLink to="/dashboard/worker-home">Home</NavLink></li>
-                            <li><a>TaskList</a></li>
+                            <li><NavLink to='/dashboard/task-list'>TaskList</NavLink></li>
                             <li><a>My Submissions</a></li>
                             <li><a>Withdrawals</a></li>
                         </>

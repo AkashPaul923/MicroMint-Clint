@@ -40,9 +40,10 @@ const AddNewTask = () => {
                 'content-type': 'multipart/form-data'
             }
         })
+        // console.log(ImgRes.data);
         if(ImgRes.data.success){
             const taskInfo = {
-                taskImage: ImgRes.data.display_url,
+                taskImage: ImgRes.data.data.display_url,
                 completionDate: data.completionDate,
                 payableAmount: parseFloat(data.payableAmount),
                 requiredWorker: parseInt(data.requiredWorker),
@@ -52,6 +53,7 @@ const AddNewTask = () => {
                 buyerEmail: user.email,
                 buyerName: user.displayName,
             }
+            // console.log(taskInfo);
             const taskRes = await axiosSecure.post('/tasks', taskInfo)
             if( taskRes.data.insertedId){
                 const coinRes = await axiosSecure.patch(`/update-coin/${user.email}`, {coin: newCoin})

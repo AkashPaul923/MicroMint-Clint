@@ -16,6 +16,7 @@ import WorkerRoute from "../Auth/WorkerRoute";
 import AddNewTask from "../Pages/Dashboard/Buyer/AddNewTask";
 import MyTasks from "../Pages/Dashboard/Buyer/MyTasks";
 import UpdateTask from "../Pages/Dashboard/Buyer/UpdateTask";
+import TaskList from "../Pages/Dashboard/Worker/TaskList";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/worker-home",
                 element: <WorkerRoute><WorkerHome></WorkerHome></WorkerRoute>,
+            },
+            {
+                path: "/dashboard/task-list",
+                element: <WorkerRoute><TaskList></TaskList></WorkerRoute>,
             },
         ]
     },
