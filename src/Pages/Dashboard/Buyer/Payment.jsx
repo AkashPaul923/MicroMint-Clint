@@ -8,11 +8,12 @@ const stripePromise = loadStripe( import.meta.env.VITE_Payment_Gateway_PK )
 const Payment = () => {
     const location = useLocation()
     const { coins, dollars } = location.state || {}
-    console.log({ coins, dollars });
+    // console.log({ coins, dollars });
     return (
         <div>
+            <h2 className="text-center text-3xl font-bold my-14">Payment</h2>
             <Elements stripe={stripePromise}>
-                <CheckoutForm />
+                <CheckoutForm coins={coins} dollars={dollars} />
             </Elements>
         </div>
     );
