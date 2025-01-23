@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -14,20 +15,61 @@ const ManageUsers = () => {
         },
     });
 
+    const handleChangeRole = ({ email, role }) => {
+        // console.log({email, role});
+        Swal.fire({
+            title: "Are you sure to Change Role?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Change it!",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.patch(
+                    `/users/update-role/${email}`,
+                    { role }
+                );
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "User role has been updated",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    refetch();
+                }
+            }
+        });
+    };
 
-    const handleChangeRole = async ({email, role}) => {
-        console.log({email, role});
-        const res = await axiosSecure.patch(`/users/update-role/${email}`, {role})
-        if(res.data.modifiedCount > 0){
-            Swal.fire({
-                icon: "success",
-                title: "User role has been updated",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            refetch()
-        }
-    }
+    const handleDeleteUser = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/user/${id}`);
+                if (res.data.deletedCount > 0) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "User deleted successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    refetch();
+                }
+            }
+        });
+    };
+
+
+    
     return (
         <div>
             <h2 className="text-3xl text-center font-bold my-14">
@@ -67,15 +109,29 @@ const ManageUsers = () => {
                                 <td>{user.coin}</td>
                                 <td className="capitalize">{user.role}</td>
                                 <td>
-                                    <select onChange={(e)=>handleChangeRole({email:user.email, role: e.target.value})} value={user.role} className="select select-bordered w-28">
-                                        <option value='admin'>Admin</option>
-                                        <option value='buyer'>Buyer</option>
-                                        <option value='worker'>Worker</option>
+                                    <select
+                                        onChange={(e) =>
+                                            handleChangeRole({
+                                                email: user.email,
+                                                role: e.target.value,
+                                            })
+                                        }
+                                        value={user.role}
+                                        className="select select-bordered w-28"
+                                    >
+                                        <option value="admin">Admin</option>
+                                        <option value="buyer">Buyer</option>
+                                        <option value="worker">Worker</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost btn-xs">
-                                        details
+                                    <button
+                                        onClick={() =>
+                                            handleDeleteUser(user._id)
+                                        }
+                                        className="btn"
+                                    >
+                                        <FaTrashAlt />
                                     </button>
                                 </td>
                             </tr>

@@ -77,11 +77,12 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Role</span>
                             </label>
-                            <select {...register("role")} className="select select-bordered bg-transparent   backdrop-blur-lg w-full">
+                            <select {...register("role", { required: true })} className="select select-bordered bg-transparent   backdrop-blur-lg w-full">
+                                <option value="">Chose One</option>
                                 <option value="worker">Worker</option>
                                 <option value="buyer">Buyer</option>
                             </select>
-                            {errors.name && <span className="text-red-500">This field is required</span>}
+                            {errors.role && <span className="text-red-500">This field is required</span>}
                         </div>
                     </div>
 

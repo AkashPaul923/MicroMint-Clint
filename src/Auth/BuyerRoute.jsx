@@ -10,10 +10,12 @@ const BuyerRoute = ({children}) => {
     if( loader || roleLoading ){
         return <div className='min-h-screen'><span className="loading loading-spinner text-accent block mt-40 mx-auto"></span></div>
     }
+    // console.log(userRole);
     if(user && userRole.role === "buyer"){
         return children
     }
-    console.log(user);
+    // console.log(user);
+    // console.log(userRole);
     return <Navigate to='/'></Navigate>
 
 };
