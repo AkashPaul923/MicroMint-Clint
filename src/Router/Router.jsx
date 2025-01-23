@@ -20,6 +20,8 @@ import TaskList from "../Pages/Dashboard/Worker/TaskList";
 import TaskDetail from "../Pages/Dashboard/Worker/TaskDetail";
 import MySubmission from "../Pages/Dashboard/Worker/MySubmission";
 import Withdrawal from "../Pages/Dashboard/Worker/Withdrawal";
+import PurchaseCoin from "../Pages/Dashboard/Buyer/PurchaseCoin";
+import Payment from "../Pages/Dashboard/Buyer/Payment";
 
 const router = createBrowserRouter([
     {
@@ -67,13 +69,21 @@ const router = createBrowserRouter([
                 element: <BuyerRoute><AddNewTask></AddNewTask></BuyerRoute>,
             },
             {
-                path: "/dashboard/my-tasks",
-                element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
+                path: "/dashboard/purchase-coin",
+                element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
             },
             {
                 path: "/dashboard/update-tasks/:id",
                 element: <BuyerRoute><UpdateTask></UpdateTask></BuyerRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
+            },
+            {
+                path: "/dashboard/my-tasks",
+                element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
+            },
+            {
+                path: "/dashboard/payment",
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
             },
             // Worker Route
             {
