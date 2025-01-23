@@ -69,8 +69,8 @@ const router = createBrowserRouter([
                 element: <BuyerRoute><AddNewTask></AddNewTask></BuyerRoute>,
             },
             {
-                path: "/dashboard/purchase-coin",
-                element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
+                path: "/dashboard/my-tasks",
+                element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
             },
             {
                 path: "/dashboard/update-tasks/:id",
@@ -78,8 +78,8 @@ const router = createBrowserRouter([
                 loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
             },
             {
-                path: "/dashboard/my-tasks",
-                element: <BuyerRoute><MyTasks></MyTasks></BuyerRoute>,
+                path: "/dashboard/purchase-coin",
+                element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
             },
             {
                 path: "/dashboard/payment",

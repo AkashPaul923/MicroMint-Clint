@@ -2,16 +2,20 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import useUser from "../../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ coins, dollars }) => {
     const { user } = useAuth()
+    const [userRole, refetch, roleLoading] = useUser()
+    const navigate = useNavigate()
     const [ error, setError] = useState('')
     const [ transactionId, setTransactionId] = useState('')
     const [clientSecret, setClientSecret] = useState("")
     const stripe = useStripe()
     const elements = useElements()
     const axiosSecure = useAxiosSecure()
-    console.log({ coins, dollars });
 
     useEffect(()=>{
         axiosSecure.post('/create-payment-intent', { price: dollars })
@@ -41,11 +45,11 @@ const CheckoutForm = ({ coins, dollars }) => {
         })
 
         if(error){
-            console.log("error", error);
+            // console.log("error", error);
             setError(error.message)
         }
         else{
-            console.log("paymentMethod", paymentMethod);
+            // console.log("paymentMethod", paymentMethod);
             setError('')
         }
 
@@ -66,6 +70,26 @@ const CheckoutForm = ({ coins, dollars }) => {
         else{
             if(paymentIntent.status === "succeeded"){
                 setTransactionId(paymentIntent.id)
+                const paymentDetail = {
+                    transactionId,
+                    payerEmail: user.email,
+                    payerName: user.displayName,
+                    payAmount: dollars,
+                    getCoin: coins,
+                    payDate: new Date().toISOString()
+                }
+                const res = await axiosSecure.post('/payments', paymentDetail)
+                if( res.data.result.insertedId){
+                    refetch()
+                    Swal.fire({
+                        // position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/dashboard/purchase-coin')
+                }
             }
         }
 
