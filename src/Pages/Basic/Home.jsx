@@ -1,9 +1,10 @@
+import Banner from "../../Components/BasicLayout/Banner";
 
 
 const Home = () => {
     return (
         <div>
-            home
+            <Banner></Banner>
         </div>
     );
 };
