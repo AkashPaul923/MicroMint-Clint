@@ -22,6 +22,7 @@ import MySubmission from "../Pages/Dashboard/Worker/MySubmission";
 import Withdrawal from "../Pages/Dashboard/Worker/Withdrawal";
 import PurchaseCoin from "../Pages/Dashboard/Buyer/PurchaseCoin";
 import Payment from "../Pages/Dashboard/Buyer/Payment";
+import PaymentHistory from "../Pages/Dashboard/Buyer/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/payment",
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+            },
+            {
+                path: "/dashboard/payment-history",
+                element: <BuyerRoute><PaymentHistory></PaymentHistory></BuyerRoute>,
             },
             // Worker Route
             {

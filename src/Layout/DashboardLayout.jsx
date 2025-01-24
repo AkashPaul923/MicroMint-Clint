@@ -23,7 +23,7 @@ const DashboardLayout = () => {
                             <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
                                 <IoMenu />
                             </label>
-                            <NavLink to="/" className="btn btn-ghost text-xl">
+                            <NavLink to="/" className="btn btn-ghost text-xl lg:hidden">
                                 MicroMint
                             </NavLink>
                         </div>
@@ -51,8 +51,11 @@ const DashboardLayout = () => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                     ></label>
-                    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                    <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-5">
                         {/* Sidebar content here */}
+                        <NavLink to="/" className="btn btn-ghost text-xl justify-start hidden lg:flex">
+                            MicroMint
+                        </NavLink>
                         {/* Admin Route */}
                         {  userRole?.role === 'admin' &&
                         <>
@@ -69,7 +72,7 @@ const DashboardLayout = () => {
                             <li><NavLink to='/dashboard/add-new-task'>Add new Tasks</NavLink></li>
                             <li><NavLink to='/dashboard/my-tasks'>My Task’s</NavLink></li>
                             <li><NavLink to='/dashboard/purchase-coin'>Purchase Coin</NavLink></li>
-                            <li><a>Payment history</a></li>
+                            <li><NavLink to='/dashboard/payment-history'>Payment history</NavLink></li>
                         </>
                         }
 

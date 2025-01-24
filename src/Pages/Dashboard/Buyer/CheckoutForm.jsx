@@ -71,7 +71,7 @@ const CheckoutForm = ({ coins, dollars }) => {
             if(paymentIntent.status === "succeeded"){
                 setTransactionId(paymentIntent.id)
                 const paymentDetail = {
-                    transactionId,
+                    transactionId: paymentIntent.id,
                     payerEmail: user.email,
                     payerName: user.displayName,
                     payAmount: dollars,

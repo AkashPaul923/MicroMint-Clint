@@ -93,7 +93,7 @@ const AddNewTask = () => {
                             <label className="label">
                                 <span className="label-text">Required Worker</span>
                             </label>
-                            <input type="number" {...register("requiredWorker", { required: true })}    placeholder="Enter your name" className="input input-bordered bg-transparent   backdrop-blur-lg w-full"/>
+                            <input type="number" {...register("requiredWorker", { required: true , min: 1})}    placeholder="Enter your name" className="input input-bordered bg-transparent   backdrop-blur-lg w-full"/>
                             {errors.requiredWorker && <span className="text-red-500">This field is required</span>}
                         </div>
                         {/* Payable Amount Input */}
@@ -101,7 +101,7 @@ const AddNewTask = () => {
                             <label className="label">
                                 <span className="label-text">Payable Amount for each</span>
                             </label>
-                            <input type="number" {...register("payableAmount", { required: true })}    placeholder="Enter your name" className="input input-bordered bg-transparent   backdrop-blur-lg w-full"/>
+                            <input type="number" {...register("payableAmount", { required: true , min: 0.01})}    placeholder="Enter your name" className="input input-bordered bg-transparent   backdrop-blur-lg w-full"/>
                             {errors.payableAmount && <span className="text-red-500">This field is required</span>}
                         </div>
                         {/* Completion Date  Input */}
