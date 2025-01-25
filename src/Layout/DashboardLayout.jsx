@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { IoMenu } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
 import useUser from "../Hooks/useUser";
+import Footer from "../Components/Navigation/Footer";
 
 const DashboardLayout = () => {
     const [userRole, refetch, roleLoading] = useUser()
@@ -43,7 +44,10 @@ const DashboardLayout = () => {
                             </table>
                         </div>
                     </div>
-                    <Outlet></Outlet>
+                    <div className="min-h-screen">
+                        <Outlet></Outlet>
+                    </div>
+                    <Footer></Footer>
                 </div>
                 <div className="drawer-side">
                     <label
