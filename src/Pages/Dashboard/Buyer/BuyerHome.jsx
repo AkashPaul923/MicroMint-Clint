@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const BuyerHome = () => {
     const { user } = useAuth();
@@ -21,7 +22,38 @@ const BuyerHome = () => {
         },
     });
 
-    console.log(data);
+    const handleChangeStatus = ({submission, status}) => {
+        // console.log({ submission, status});
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Update it!"
+        }).then( async (result) => {
+            if (result.isConfirmed) {
+                const changeData = {
+                    newStatus : status,
+                    workerEmail: submission.workerEmail,
+                    incCoin : submission.payableAmount,
+                    taskId : submission.taskId
+                }
+                const res = await axiosSecure.patch(`/submissions/${submission._id}`, changeData )
+                // console.log(res);
+                if( res.data.modifiedCount > 0 ){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Submission status has been updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    refetch()
+                }
+            }
+        });
+    }
 
     if (isLoading) {
         return (
@@ -59,28 +91,38 @@ const BuyerHome = () => {
                                 <th>#</th>
                                 <th>Worker Name</th>
                                 <th>Task Title</th>
-                                <th>Payable Amount</th>
+                                <th>Payable Coin</th>
                                 <th>Submission</th>
                                 <th>Status</th>
                                 <th>Status Update</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data?.reviewSubmissions.map((Submission, idx) => (
-                                <tr key={Submission?._id}>
+                            {data?.reviewSubmissions.map((submission, idx) => (
+                                <tr key={submission?._id}>
                                     <td>{idx + 1}</td>
-                                    <td>{Submission?.workerName}</td>
-                                    <td>{Submission?.taskTitle}</td>
-                                    <td>${Submission?.payableAmount}</td>
+                                    <td>{submission?.workerName}</td>
+                                    <td>{submission?.taskTitle}</td>
+                                    <td>{submission?.payableAmount}</td>
                                     <td>
-                                        <button className="btn btn-xs" onClick={() => document.getElementById(`modal-${Submission._id}`).showModal()}>
+                                        <button className="btn btn-xs" onClick={() => document.getElementById(`modal-${submission._id}`).showModal()}>
                                             Show Submissions
                                         </button>
                                     </td>
-                                    <td>{Submission?.status}</td>
-                                    <td></td>
+                                    <td>{submission?.status}</td>
+                                    <td>
+                                        <select 
+                                            onChange={(e) => handleChangeStatus({ submission, status: e.target.value })}
+                                            value={submission?.status}
+                                            className="select select-bordered w-28"
+                                        >
+                                            <option value="Pending">Pending</option>
+                                            <option value="Approved">Approved</option>
+                                            <option value="Rejected">Rejected</option>
+                                        </select>
+                                    </td>
                                     {/* Modal */}
-                                    <dialog id={`modal-${Submission._id}`} className="modal">
+                                    <dialog id={`modal-${submission._id}`} className="modal">
                                         <div className="modal-box">
                                             <form method="dialog">
                                                 {/* if there is a button in form, it will close the modal */}
@@ -89,7 +131,7 @@ const BuyerHome = () => {
                                                 </button>
                                             </form>
                                             <h3 className="text-lg p-10">
-                                                {Submission?.submissionDetail}
+                                                {submission?.submissionDetail}
                                             </h3>
                                         </div>
                                     </dialog>
