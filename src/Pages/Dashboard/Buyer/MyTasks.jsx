@@ -10,7 +10,7 @@ const MyTasks = () => {
     const { user } = useAuth();
     const [userRole, refetch, roleLoading] = useUser()
     const axiosSecure = useAxiosSecure();
-    const { data: tasks = [], refetch: taskRefetch } = useQuery({
+    const { data: tasks = [],isLoading, refetch: taskRefetch } = useQuery({
         queryKey: ["tasks", user.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/my-tasks/${user.email}`);
@@ -42,6 +42,14 @@ const MyTasks = () => {
         
     }
 
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
 
     return (

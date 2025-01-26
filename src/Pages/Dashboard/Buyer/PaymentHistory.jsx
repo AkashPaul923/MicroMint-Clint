@@ -5,13 +5,27 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const { data: payments = [] } = useQuery({
+    const { data: payments = [], isLoading } = useQuery({
         queryKey: ["payments"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/payments/${user.email}`);
             return res.data;
         },
     });
+
+
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
+
+
+
+    
     return (
         <div>
             <h2 className="text-center text-3xl font-bold my-14">

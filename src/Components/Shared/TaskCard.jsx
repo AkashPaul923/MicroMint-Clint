@@ -1,4 +1,4 @@
-import { FaUser, FaCalendarAlt, FaDollarSign, FaUsers } from "react-icons/fa";
+import { FaUser, FaCalendarAlt, FaUsers, FaCoins } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const TaskCard = ({ task }) => {
@@ -33,7 +33,7 @@ const TaskCard = ({ task }) => {
 
                 {/* Payable Amount */}
                 <p className="text-gray-700 text-sm flex items-center gap-2">
-                    <FaDollarSign className="text-yellow-500" />${payableAmount}
+                    <FaCoins className="text-yellow-500" />{payableAmount}
                 </p>
 
                 {/* Required Workers */}

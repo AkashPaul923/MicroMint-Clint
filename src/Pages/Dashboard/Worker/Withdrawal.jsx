@@ -58,7 +58,7 @@ const Withdrawal = () => {
     };
 
     return (
-        <div className="px-5">
+        <div  className="my-20 px-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto my-12">
                 <div className="flex flex-col gap-7 justify-center items-center p-10 rounded-xl bg-base-300 text-2xl font-medium">
                     <p>Total Coin</p>

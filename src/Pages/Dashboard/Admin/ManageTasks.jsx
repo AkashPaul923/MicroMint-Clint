@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const ManageTasks = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: allTask = [], refetch } = useQuery({
+    const { data: allTask = [], isLoading, refetch } = useQuery({
         queryKey: ["all task"],
         queryFn: async () => {
             const res = await axiosSecure.get("/all-task");
@@ -38,6 +38,20 @@ const ManageTasks = () => {
             }
         });
     }
+
+
+
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
+
+
+
 
     return (
         <div className="my-20">

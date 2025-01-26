@@ -6,7 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
             const res = await axiosSecure.get("/users");
@@ -67,6 +67,15 @@ const ManageUsers = () => {
             }
         });
     };
+
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
 
     
