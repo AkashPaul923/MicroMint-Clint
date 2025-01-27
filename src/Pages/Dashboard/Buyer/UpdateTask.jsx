@@ -1,14 +1,21 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 
 const UpdateTask = () => {
-    const task = useLoaderData()
-    // console.log(task);
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
+    const {id} = useParams()
+    const { data : task = {}, isLoading } = useQuery({
+        queryKey: ['task', id],
+        queryFn: async() => {
+            const res = await axiosSecure.get(`/tasks/${id}`)
+            return res.data
+        }
+    })
     const { register, handleSubmit, reset } = useForm()
            
     const onSubmit = async (data) =>{
@@ -24,6 +31,19 @@ const UpdateTask = () => {
             navigate('/dashboard/my-tasks')
         }
     }
+
+
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
+
+
+    
 
     return (
         <div>

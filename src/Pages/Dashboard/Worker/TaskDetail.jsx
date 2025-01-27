@@ -1,15 +1,26 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const TaskDetail = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    const task = useLoaderData();
+    const {id} = useParams()
+    const { data : task = {}, isLoading } = useQuery({
+        queryKey: ['task', id],
+        queryFn: async() => {
+            const res = await axiosSecure.get(`/tasks/${id}`)
+            return res.data
+        }
+    })
+
+
+
     const { _id, taskImage, taskTitle, taskDetail, buyerEmail, buyerName, completionDate, payableAmount, requiredWorker, submissionInfo} = task
-    // console.log(task);
+    console.log(id);
 
     const handleTaskSubmit = async ( e ) => {
         e.preventDefault()
@@ -39,6 +50,17 @@ const TaskDetail = () => {
             });
             navigate('/dashboard/my-submission')
         }
+    }
+
+
+
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center my-[200px]">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
     }
 
 

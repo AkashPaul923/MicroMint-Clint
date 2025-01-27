@@ -75,8 +75,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/update-tasks/:id",
-                element: <BuyerRoute><UpdateTask></UpdateTask></BuyerRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
+                element: <BuyerRoute><UpdateTask></UpdateTask></BuyerRoute>
             },
             {
                 path: "/dashboard/purchase-coin",
@@ -101,8 +100,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/task-detail/:id",
-                element: <WorkerRoute><TaskDetail></TaskDetail></WorkerRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/tasks/${params.id}`)
+                element: <WorkerRoute><TaskDetail></TaskDetail></WorkerRoute>
             },
             {
                 path: "/dashboard/my-submission",

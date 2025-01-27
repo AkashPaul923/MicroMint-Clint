@@ -81,7 +81,7 @@ const BuyerHome = () => {
             </div>
             <div className="my-20 px-5">
                 <h2 className="text-3xl text-center font-bold mb-14">
-                    Pending Withdrawals
+                    Task To Review
                 </h2>
                 <div className="overflow-x-auto max-w-6xl mx-auto">
                     <table className="table">
