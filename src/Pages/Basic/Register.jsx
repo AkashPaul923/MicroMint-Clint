@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/Shared/SocialLogin";
 
 const Register = () => {
     const axiosPublic = useAxiosPublic()
@@ -121,7 +122,7 @@ const Register = () => {
                 <div className="text-center mt-4">
                     <p className="text-sm ">Already have account?<Link to='/login' className="font-bold ml-2">Please login</Link></p>
                     <p className="text-sm mt-2">Or sign in with</p>
-                    {/* <SocialLogin></SocialLogin> */}
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
 

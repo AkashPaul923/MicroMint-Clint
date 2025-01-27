@@ -4,6 +4,7 @@ import loginBg from "../../assets/image/loginBg2.jpg";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import SocialLogin from "../../Components/Shared/SocialLogin";
 
 const Login = () => {
     const { loginUser, loader } = useAuth()
@@ -98,7 +99,7 @@ const Login = () => {
                             </Link>
                         </p>
                         <p className="text-sm mt-2">Or sign in with</p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
