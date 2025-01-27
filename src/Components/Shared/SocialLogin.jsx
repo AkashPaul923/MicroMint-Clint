@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useUser from "../../Hooks/useUser";
+import { useEffect } from "react";
 
 const SocialLogin = () => {
-    const { googleSignin } = useAuth()
+    const [userRole, refetch, roleLoading] = useUser()
+    const { user, googleSignin } = useAuth()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
@@ -27,10 +30,18 @@ const SocialLogin = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate(`/dashboard/worker-home`)
+                
+                // navigate(`/dashboard/worker-home`)
             })
         })
     }
+
+    useEffect( ()=> {
+        refetch()
+        if(user && userRole?.role){
+            navigate(`/dashboard/${userRole?.role}-home`)
+        }
+    },[user, userRole])
 
     return (
         <div className="my-3">

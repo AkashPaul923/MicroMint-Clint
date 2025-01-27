@@ -6,8 +6,11 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Components/Shared/SocialLogin";
+import useUser from "../../Hooks/useUser";
+import { useEffect } from "react";
 
 const Register = () => {
+    const [userRole, refetch, roleLoading] = useUser()
     const axiosPublic = useAxiosPublic()
     const navigate= useNavigate()
     const { user, setUser, createUser, profileUpdate} = useAuth()
@@ -26,7 +29,7 @@ const Register = () => {
         }
         createUser( data.email, data.password)
         .then(res => {
-            console.log(res);
+            // console.log(res);
             profileUpdate( data.name, data.photo)
             .then(()=>{
                 setUser({...res.user, displayName: data.name, photoURL: data.photo})
@@ -47,13 +50,20 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        refetch()
                         // TODO: Redirect user
-                        navigate(`/dashboard/${data.role}-home`)
+                        // navigate(`/dashboard/${data.role}-home`)
                     }
                 })
             })
         })
     }
+
+    useEffect( ()=> {
+        if(user && userRole.role){
+            navigate(`/dashboard/${userRole?.role}-home`)
+        }
+    },[user, userRole])
 
 
     return (
