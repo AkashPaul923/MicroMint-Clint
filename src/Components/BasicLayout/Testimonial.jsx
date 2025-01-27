@@ -7,6 +7,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 
 
 const Testimonial = () => {
@@ -61,18 +63,23 @@ const Testimonial = () => {
                     >
                         {reviews.map((review) => (
                             <SwiperSlide key={review._id}>
-                                <div className="border bg-base-300">
-                                    <div>
+                                <div className="border bg-base-300 p-5 min-h-[300px] flex flex-col gap-3">
+                                    <div className="flex items-center gap-2">
                                         <div>
-                                            <img src={review.photo} alt="" />
+                                            <img className="w-12 rounded-full aspect-square" src={review.photo} alt="" />
                                         </div>
                                         <div>
-                                            <p>{review.name}</p>
+                                            <p className="font-bold">{review.name}</p>
                                             <p>{review.date}</p>
                                         </div>
                                     </div>
-                                    <p>{review.comment}</p>
+                                    <p className="flex-grow italic text-justify">{review.comment}</p>
                                     <div>
+                                        <Rating
+                                            style={{ maxWidth: 130 }}
+                                            value={review.rating}
+                                            readOnly
+                                        />
                                     </div>
                                 </div>
                             </SwiperSlide>

@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecureInstance = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://micro-mint-server-two.vercel.app",
 });
 const useAxiosSecure = () => {
     const { logout,} = useAuth()

@@ -40,7 +40,7 @@ const Navbar = () => {
                 <li><NavLink to="/register">Register</NavLink></li>
                 </>
             }
-            <li><a>Join as Developer</a></li>
+            <li><a href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-AkashPaul923" target="_blank">Join as Developer</a></li>
         </>
     );
 
@@ -74,7 +74,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow lg:hidden"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow lg:hidden z-20"
                         >
                             {/* {user? <div>{user?.displayName}</div> :''} */}
                             {links}
