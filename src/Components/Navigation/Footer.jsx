@@ -1,3 +1,5 @@
+import logo from "../../assets/image/logo1.png"
+
 
 const Footer = () => {
     return (
@@ -6,7 +8,8 @@ const Footer = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Logo and Description */}
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">MicroMint</h2>
+                        {/* <h2 className="text-2xl font-bold mb-4">MicroMint</h2> */}
+                        <img src={logo} alt="MicroMint" className="w-[200px] mb-5" />
                         <p className="">
                             Your ultimate platform for completing tasks and
                             earning rewards. Empowering buyers and workers
@@ -45,22 +48,25 @@ const Footer = () => {
                         </h3>
                         <div className="flex space-x-4">
                             <a
-                                href="#"
+                                href="https://www.facebook.com/akash.paul.664216/?viewas=100000686899395"
+                                target="_blank"
                                 className="w-12"
                             >
                                 <img src="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" alt="" />
                             </a>
                             <a
-                                href="#"
+                                href="https://github.com/AkashPaul923"
+                                target="_blank"
                                 className="w-12"
                             >
-                                <img src="https://img.icons8.com/?size=100&id=vzeEiquVUR7e&format=png&color=000000" alt="" />
+                                <img src="https://img.icons8.com/?size=100&id=efFfwotdkiU5&format=png&color=000000" alt="" />
                             </a>
                             <a
-                                href="#"
+                                href="https://www.linkedin.com/in/akash-paul-y2002/"
+                                target="_blank"
                                 className="w-12"
                             >
-                                <img src="https://img.icons8.com/?size=100&id=BrU2BBoRXiWq&format=png&color=000000" alt="" />
+                                <img src="https://img.icons8.com/?size=100&id=kBCrQMzpQDLQ&format=png&color=000000" alt="" />
                             </a>
                         </div>
                     </div>

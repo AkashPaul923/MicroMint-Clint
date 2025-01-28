@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useUser from "../../Hooks/useUser";
+import logo from "../../assets/image/logo.png"
 const Navbar = () => {
     const {user, logout, loader} = useAuth()
     const [userRole, refetch , roleLoading] = useUser()
@@ -46,10 +47,13 @@ const Navbar = () => {
 
 
     return (
-        <div>
-            <div className="navbar bg-base-100">
+        <nav>
+            <div className="navbar bg-base-100 z-20">
                 <div className="navbar-start">
-                    <NavLink to="/" className="btn btn-ghost text-xl">MicroMint</NavLink>
+                    <NavLink to="/" className="btn btn-ghost text-2xl font-bold flex items-center">
+                        <img className="w-12" src={logo} alt="" />
+                        <h1 className="text-[#38b6ff]">MicroMint</h1>
+                    </NavLink>
                 </div>
                 {/* <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -74,7 +78,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow lg:hidden z-20"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow lg:hidden z-30"
                         >
                             {/* {user? <div>{user?.displayName}</div> :''} */}
                             {links}
@@ -82,7 +86,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 };
 

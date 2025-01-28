@@ -4,6 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
 import useUser from "../Hooks/useUser";
 import Footer from "../Components/Navigation/Footer";
+import logo from "../assets/image/logo.png"
 
 const DashboardLayout = () => {
     const [userRole, refetch, roleLoading] = useUser()
@@ -24,8 +25,9 @@ const DashboardLayout = () => {
                             <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
                                 <IoMenu />
                             </label>
-                            <NavLink to="/" className="btn btn-ghost text-xl lg:hidden">
-                                MicroMint
+                            <NavLink to="/" className="btn btn-ghost text-2xl font-bold flex items-center lg:hidden">
+                                <img className="w-12" src={logo} alt="" />
+                                <h1 className="text-[#38b6ff]">MicroMint</h1>
                             </NavLink>
                         </div>
                         <div className="navbar-end space-x-2"> 
@@ -57,8 +59,9 @@ const DashboardLayout = () => {
                     ></label>
                     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-5">
                         {/* Sidebar content here */}
-                        <NavLink to="/" className="btn btn-ghost text-xl justify-start hidden lg:flex">
-                            MicroMint
+                        <NavLink to="/" className="btn btn-ghost text-2xl font-bold items-center justify-start hidden lg:flex">
+                            <img className="w-12" src={logo} alt="" />
+                            <h1 className="text-[#38b6ff]">MicroMint</h1>
                         </NavLink>
                         {/* Admin Route */}
                         {  userRole?.role === 'admin' &&
