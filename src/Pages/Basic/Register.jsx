@@ -43,7 +43,8 @@ const Register = () => {
             .then((ImgRes) => {
                 console.log(ImgRes.data);
                 if (ImgRes.data.success) {
-                    createUser(data.email, data.password).then((res) => {
+                    createUser(data.email, data.password)
+                    .then((res) => {
                         // console.log(res);
                         profileUpdate(data.name, ImgRes.data.data.display_url).then(() => {
                             setUser({
@@ -73,7 +74,16 @@ const Register = () => {
                                 }
                             });
                         });
-                    });
+                    })
+                    .catch((err => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "User already exist",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }))
+                    
                 }
             });
     };

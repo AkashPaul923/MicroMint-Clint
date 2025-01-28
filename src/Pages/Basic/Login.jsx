@@ -34,6 +34,16 @@ const Login = () => {
                 navigate(`/dashboard/${res.data.role}-home`)
             })
         })
+        .catch((error) => {
+            // console.log(error);
+            Swal.fire({
+                // position: "top-end",
+                icon: "error",
+                title: "Invalid Email or Password",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
     }
 
     return (
