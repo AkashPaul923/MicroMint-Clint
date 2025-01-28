@@ -116,7 +116,7 @@ const Register = () => {
                                 </span>
                             )}
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-4">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 lg:gap-4">
                             {/* Role Input */}
                             <div className="form-control w-full">
                                 <label className="label">
