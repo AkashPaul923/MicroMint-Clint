@@ -25,8 +25,8 @@ const DashboardLayout = () => {
                             <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
                                 <IoMenu />
                             </label>
-                            <NavLink to="/" className="btn btn-ghost text-2xl font-bold flex items-center lg:hidden">
-                                <img className="w-12" src={logo} alt="" />
+                            <NavLink to="/" className="btn btn-ghost md:text-2xl font-bold flex items-center lg:hidden">
+                                <img className="w-8 md:w-12" src={logo} alt="" />
                                 <h1 className="text-[#38b6ff]">MicroMint</h1>
                             </NavLink>
                         </div>

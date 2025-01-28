@@ -46,6 +46,15 @@ const Login = () => {
         })
     }
 
+
+    // if (loader) {
+    //     return (
+    //         <div className="flex justify-center my-[200px]">
+    //             <span className="loading loading-bars loading-lg"></span>
+    //         </div>
+    //     );
+    // }
+
     return (
         <div
             className="flex items-center justify-center min-h-screen font-sans"
