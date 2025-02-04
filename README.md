@@ -79,14 +79,17 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository**  
    Open your terminal and run the following command:  
    ```bash
-   git clone github-repository-link
+   git clone https://github.com/AkashPaul923/MicroMint-Clint.git
 
 2. **Navigate to the project directory**
-    cd file-name
+    ```bash
+    cd MicroMint-Clint
 
 3. **Install dependencies**
+    ```bash
     npm install
 
 4. **Start the development server**
-    npm start
+    ```bash
+    npm run dev
 
