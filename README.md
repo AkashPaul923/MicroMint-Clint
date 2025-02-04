@@ -66,3 +66,27 @@ MicroMint is the Micro Tasking and Earning Platform is designed to provide users
 - "postcss": "^8.5.1",
 - "tailwindcss": "^3.4.17",
 - "vite": "^6.0.5"
+
+
+## Prerequisites  
+Before you begin, ensure you have the following installed:  
+- **Node.js** (v14 or higher) – [Download Node.js](https://nodejs.org)  
+- **Git** – [Download Git](https://git-scm.com/)  
+- **A package manager:** npm  
+
+## 🔧 Installation Steps  
+
+1. **Clone the repository**  
+   Open your terminal and run the following command:  
+   ```bash
+   git clone github-repository-link
+
+2. **Navigate to the project directory**
+    cd file-name
+
+3. **Install dependencies**
+    npm install
+
+4. **Start the development server**
+    npm start
+
