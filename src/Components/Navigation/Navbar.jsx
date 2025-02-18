@@ -47,7 +47,7 @@ const Navbar = () => {
 
 
     return (
-        <nav>
+        <nav className="fixed z-50 w-full">
             <div className="navbar bg-base-100 z-20">
                 <div className="navbar-start">
                     <NavLink to="/" className="btn btn-ghost text-2xl font-bold flex items-center">

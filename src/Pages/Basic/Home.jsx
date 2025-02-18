@@ -10,6 +10,7 @@ import Footer from "../../Components/Navigation/Footer";
 const Home = () => {
     return (
         <div>
+            <div className="h-[70px]"></div>
             <Banner></Banner>
             <TopWorker></TopWorker>
             <WhyChooseUs></WhyChooseUs>

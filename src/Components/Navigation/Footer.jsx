@@ -24,7 +24,6 @@ const Footer = () => {
                         </h3>
                         <ul className="space-y-2">
                             <li><a href="#" className="">About Us</a></li>
-                            <li><a href="#" className="">How It Works</a></li>
                             <li><a href="#" className="">FAQs</a></li>
                             <li><a href="#" className=""> Contact Us</a></li>
                         </ul>
@@ -35,9 +34,6 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold mb-4">Support</h3>
                         <ul className="space-y-2">
                             <li><a href="#" className="">Privacy Policy</a></li>
-                            <li><a href="#" className="">Terms of Service</a></li>
-                            <li><a href="#" className="">Help Center</a></li>
-                            <li><a href="#"  className="">Report a Problem</a></li>
                         </ul>
                     </div>
 
