@@ -23,6 +23,8 @@ import Withdrawal from "../Pages/Dashboard/Worker/Withdrawal";
 import PurchaseCoin from "../Pages/Dashboard/Buyer/PurchaseCoin";
 import Payment from "../Pages/Dashboard/Buyer/Payment";
 import PaymentHistory from "../Pages/Dashboard/Buyer/PaymentHistory";
+import AboutUs from "../Pages/Basic/AboutUs";
+import ContactUs from "../Pages/Basic/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/about-us',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/contact-us',
+                element: <ContactUs></ContactUs>
             },
             {
                 path: '/register',
