@@ -69,7 +69,7 @@ const Withdrawal = () => {
                     <p>${(userRole.coin / 20).toFixed(2)}</p>
                 </div>
             </div>
-            <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6">
+            <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-lg p-6">
                 <h1 className="text-xl font-bold mb-4 text-center">
                     Withdrawal Form
                 </h1>
@@ -79,7 +79,7 @@ const Withdrawal = () => {
                         <div className="mb-4">
                             <label
                                 htmlFor="coinsToWithdraw"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium "
                             >
                                 Coins to Withdraw
                             </label>
@@ -96,7 +96,7 @@ const Withdrawal = () => {
                         <div className="mb-4">
                             <label
                                 htmlFor="withdrawAmount"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium "
                             >
                                 Withdraw Amount ($)
                             </label>
@@ -105,7 +105,7 @@ const Withdrawal = () => {
                                 id="withdrawAmount"
                                 value={withdrawAmount}
                                 readOnly
-                                className="mt-1 block w-full p-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm"
+                                className="mt-1 block w-full p-2  border border-gray-300 rounded-md shadow-sm"
                             />
                         </div>
                     </div>
@@ -114,7 +114,7 @@ const Withdrawal = () => {
                         <div className="mb-4">
                             <label
                                 htmlFor="paymentSystem"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium "
                             >
                                 Select Payment System
                             </label>

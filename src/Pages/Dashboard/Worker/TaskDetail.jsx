@@ -67,7 +67,7 @@ const TaskDetail = () => {
 
     return (
         <div className="min-h-screen flex justify-center items-center p-4">
-            <div className="w-full max-w-7xl bg-white shadow-lg rounded-lg overflow-hidden my-14">
+            <div className="w-full max-w-7xl bg-base-100 shadow-lg rounded-lg overflow-hidden my-14">
                 {/* Task Image */}
                 {taskImage && (
                     <img
@@ -79,45 +79,45 @@ const TaskDetail = () => {
 
                 {/* Task Details */}
                 <div className="p-6">
-                    <h1 className="text-2xl font-bold text-gray-800 mb-4">
+                    <h1 className="text-2xl font-bold  mb-4">
                         {taskTitle}
                     </h1>
-                    <p className="text-gray-700 text-sm mb-4">
+                    <p className=" text-sm mb-4">
                         {taskDetail}
                     </p>
 
                     {/* Buyer Information */}
                     <div className="mb-4">
-                        <p className="text-gray-600 text-sm">
+                        <p className=" text-sm">
                             <strong>Buyer Name:</strong> {buyerName}
                         </p>
-                        <p className="text-gray-600 text-sm">
+                        <p className=" text-sm">
                             <strong>Buyer Email:</strong> {buyerEmail}
                         </p>
                     </div>
 
                     {/* Additional Task Info */}
                     <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className=" text-gray-600">
+                        <div className=" ">
                             <strong>Completion Date:</strong>{" "}
                             {completionDate}
                         </div>
-                        <div className=" text-gray-600">
+                        <div className=" ">
                             <strong>Payable Amount:</strong> $
                             {payableAmount}
                         </div>
-                        <div className=" text-gray-600">
+                        <div className=" ">
                             <strong>Required Workers:</strong>{" "}
                             {requiredWorker}
                         </div>
-                        <div className=" text-gray-600">
+                        <div className=" ">
                             <strong>Submission Info:</strong>{" "}
                             {submissionInfo}
                         </div>
                     </div>
 
                     {/* Submission Form */}
-                    <div className="bg-gray-100 p-4 rounded-lg">
+                    <div className=" p-4 rounded-lg">
                         <h2 className="text-lg font-bold  mb-4">Submit Your Work</h2>
                         <form onSubmit={handleTaskSubmit}>
                             {/* Submission Details (Text Area) */}

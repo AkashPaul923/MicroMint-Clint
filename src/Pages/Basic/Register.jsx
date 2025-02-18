@@ -97,7 +97,7 @@ const Register = () => {
     return (
         <div
             className="flex items-center justify-center min-h-screen font-sans"
-            style={{ backgroundImage: `url(${registerBg})` }}
+            // style={{ backgroundImage: `url(${registerBg})` }}
         >
             <div className=" rounded-lg shadow-xl shadow-slate-700 p-8 max-w-6xl flex w-11/12 border-2">
                 {/* Left Side: Login Form */}

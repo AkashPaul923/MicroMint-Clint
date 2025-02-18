@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useUser from "../../Hooks/useUser";
 import logo from "../../assets/image/logo.png"
+import Theme from "../Shared/Theme";
 const Navbar = () => {
     const {user, logout, loader} = useAuth()
     const [userRole, refetch , roleLoading] = useUser()
@@ -66,6 +67,7 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal px-1">{links}</ul>
                     </div>
                     {user && <p className="btn mx-3">Coin {userRole?.coin}</p>}
+                    <Theme></Theme>
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}
