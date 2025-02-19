@@ -1,5 +1,6 @@
 import Banner from "../../Components/BasicLayout/Banner";
 import FAQSection from "../../Components/BasicLayout/FAQSection";
+import HowItWorks from "../../Components/BasicLayout/HowItWorks";
 import OurPartners from "../../Components/BasicLayout/OurPartners";
 import Testimonial from "../../Components/BasicLayout/Testimonial";
 import TopWorker from "../../Components/BasicLayout/TopWorker";
@@ -12,6 +13,7 @@ const Home = () => {
         <div>
             <div className="h-[70px]"></div>
             <Banner></Banner>
+            <HowItWorks></HowItWorks>
             <TopWorker></TopWorker>
             <WhyChooseUs></WhyChooseUs>
             <FAQSection></FAQSection>
