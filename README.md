@@ -6,7 +6,7 @@ MicroMint is the Micro Tasking and Earning Platform is designed to provide users
 
 ## Live Link
 - Check out the live version of MicroMint Clint here: [MicroMint](https://micromint-0.web.app/)
-- Check out the MicroMint Server side code: [MicroMint Server](https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-AkashPaul923)
+- Check out the MicroMint Server side code: [MicroMint Server](https://github.com/AkashPaul923/MicroMint-Server)
 
 ## Admin Email and Password
 - Email : admin@admin.com

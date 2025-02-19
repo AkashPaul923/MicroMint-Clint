@@ -30,6 +30,9 @@ const Navbar = () => {
 
     const links = (
         <>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/about-us">About Us</NavLink></li>
+            <li><NavLink to="/Contact-us">Contact Us</NavLink></li>
             {
                 user ?
                 <>
@@ -38,14 +41,12 @@ const Navbar = () => {
                 </>
                 :
                 <>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/about-us">About Us</NavLink></li>
-                <li><NavLink to="/Contact-us">Contact Us</NavLink></li>
                 <li><NavLink to="/login">Login</NavLink></li>
                 <li><NavLink to="/register">Register</NavLink></li>
                 </>
             }
             <li><a href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-AkashPaul923" target="_blank">Join as Developer</a></li>
+            
         </>
     );
 

@@ -25,6 +25,7 @@ import Payment from "../Pages/Dashboard/Buyer/Payment";
 import PaymentHistory from "../Pages/Dashboard/Buyer/PaymentHistory";
 import AboutUs from "../Pages/Basic/AboutUs";
 import ContactUs from "../Pages/Basic/ContactUs";
+import Profile from "../Pages/Basic/Profile";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children:[
+            {
+                path: "/dashboard/profile",
+                element: <Profile></Profile>,
+            },
             // Admin
             {
                 path: "/dashboard/admin-home",
