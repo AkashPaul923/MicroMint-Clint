@@ -60,13 +60,13 @@ const Navbar = () => {
                         <h1 className="text-[#38b6ff]">MicroMint</h1>
                     </NavLink>
                 </div>
-                {/* <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">{links}</ul>
-                </div> */}
+                </div>
                 <div className="navbar-end">
-                    <div className=" hidden lg:flex">
+                    {/* <div className=" hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">{links}</ul>
-                    </div>
+                    </div> */}
                     {user && <p className="btn mx-3">Coin {userRole?.coin}</p>}
                     <Theme></Theme>
                     <div className="dropdown dropdown-end">
