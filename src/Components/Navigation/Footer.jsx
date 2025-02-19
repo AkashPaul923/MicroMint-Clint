@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/image/logo1.png"
 
 
 const Footer = () => {
     return (
-        <footer className=" py-14 bg-base-200">
+        <footer className=" py-14 bg-base-100">
             <div className="max-w-screen-2xl mx-auto px-5">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Logo and Description */}
@@ -23,9 +24,8 @@ const Footer = () => {
                             Quick Links
                         </h3>
                         <ul className="space-y-2">
-                            <li><a href="#" className="">About Us</a></li>
-                            <li><a href="#" className="">FAQs</a></li>
-                            <li><a href="#" className=""> Contact Us</a></li>
+                            <li><Link to="/about-us" className="">About Us</Link></li>
+                            <li><Link to="/contact-us" className=""> Contact Us</Link></li>
                         </ul>
                     </div>
 
@@ -33,7 +33,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Support</h3>
                         <ul className="space-y-2">
-                            <li><a href="#" className="">Privacy Policy</a></li>
+                        <li><a href="#FAQ" className="">FAQs</a></li>
                         </ul>
                     </div>
 

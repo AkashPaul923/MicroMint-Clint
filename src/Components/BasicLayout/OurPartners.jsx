@@ -50,7 +50,7 @@ const OurPartners = () => {
                 </h2>
                 <div className="flex justify-center xl:justify-between items-center flex-wrap  gap-4">
                     {partners.map((partner) => (
-                        <div className="bg-base-100 p-2 rounded-md gap-4 shadow-xl" key={partner.id}>
+                        <div className="bg-base-100 p-2 rounded-md gap-4 shadow-xl transition-transform transform hover:scale-105" key={partner.id}>
                             <img className="w-[80px] md:w-[120px]" src={partner.logo} alt={partner.name} />
                         </div>
                     ))}

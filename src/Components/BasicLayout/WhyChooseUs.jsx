@@ -1,6 +1,4 @@
-// import { Award, ShieldCheck, Clock, Globe } from "lucide-react";
 
-import { FaAward, FaClock, FaGlobe } from "react-icons/fa";
 
 const WhyChooseUs = () => {
     const features = [
@@ -46,7 +44,7 @@ const WhyChooseUs = () => {
                     {features.map((feature) => (
                         <div
                             key={feature.id}
-                            className="bg-base-100 p-6 rounded-2xl shadow-lg flex flex-col items-center text-center"
+                            className="bg-base-100 p-6 rounded-2xl shadow-lg flex flex-col items-center text-center transition-transform transform hover:scale-105"
                         >
                             <img src={feature.icon} alt="" />
                             <h3 className="text-xl font-semibold mt-4">

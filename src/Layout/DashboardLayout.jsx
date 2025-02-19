@@ -4,6 +4,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
 import useUser from "../Hooks/useUser";
 import logo from "../assets/image/logo.png";
+import Theme from "../Components/Shared/Theme";
 
 const DashboardLayout = () => {
     const [userRole, refetch, roleLoading] = useUser();
@@ -27,6 +28,7 @@ const DashboardLayout = () => {
                     </NavLink>
                 </div>
                 <div className="navbar-end space-x-2">
+                    <Theme></Theme>
                     <table className="text-center border-spacing-1">
                         <tbody>
                             <tr>

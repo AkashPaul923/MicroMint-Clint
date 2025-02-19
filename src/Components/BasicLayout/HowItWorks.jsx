@@ -33,10 +33,10 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-12 bg-base-200">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-primary mb-6">How It Works</h2>
-        <p className="text-lg text-gray-600 mb-10">
+    <section className="py-20 bg-base-200">
+      <div className="max-w-screen-2xl mx-auto text-center px-5">
+        <h2 className="text-3xl font-bold  mb-6">How It Works</h2>
+        <p className="  mb-14">
           Follow these simple steps to earn or get tasks done efficiently.
         </p>
 
@@ -44,11 +44,11 @@ const HowItWorks = () => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className="p-6 bg-white shadow-lg rounded-xl flex flex-col items-center text-center transition-transform transform hover:scale-105"
+              className="p-6 bg-base-100 shadow-lg rounded-xl flex flex-col items-center text-center transition-transform transform hover:scale-105"
             >
               {step.icon}
               <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
-              <p className="text-gray-500 mt-2">{step.description}</p>
+              <p className=" mt-2">{step.description}</p>
             </div>
           ))}
         </div>
